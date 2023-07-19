@@ -97,6 +97,7 @@
     right: 0.8rem;
     height: 1px;
     background-color: $c-dark;
+    transition: all 0.35s ease;
   }
 
   &::before {
@@ -241,7 +242,7 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
-    transition: color .35s ease;
+    transition: color 0.35s ease;
 
     &::after {
       content: "";
@@ -252,7 +253,7 @@
       background-color: $c-light;
       right: 0;
       left: unset;
-      transition: all .35s ease;
+      transition: all 0.35s ease;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         background-color: $c-dark;
