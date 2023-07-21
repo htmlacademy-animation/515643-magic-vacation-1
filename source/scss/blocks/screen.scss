@@ -364,3 +364,20 @@
 .screen--rules {
   background-color: $c-dark;
 }
+
+.page-transition {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: $c-dark;
+  pointer-events: none;
+  transform: translateY(100%);
+
+  &.active {
+    transition: transform 1s ease;
+    transform: translateY(0);
+  }
+}

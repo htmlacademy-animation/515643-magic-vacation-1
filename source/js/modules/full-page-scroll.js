@@ -8,10 +8,12 @@ export default class FullPageScroll {
 
     this.screenElements = document.querySelectorAll(`.screen:not(.screen--result)`);
     this.menuElements = document.querySelectorAll(`.page-header__menu .js-menu-link`);
+    this.pageTransitionElem = document.querySelector(`.page-transition`);
 
     this.activeScreen = 0;
     this.onScrollHandler = this.onScroll.bind(this);
     this.onUrlHashChengedHandler = this.onUrlHashChanged.bind(this);
+    this.pagesNeededTransitionLeave = [`story`];
   }
 
   init() {
@@ -42,13 +44,32 @@ export default class FullPageScroll {
   onUrlHashChanged() {
     const newIndex = Array.from(this.screenElements).findIndex((screen) => location.hash.slice(1) === screen.id);
     this.activeScreen = (newIndex < 0) ? 0 : newIndex;
-    this.changePageDisplay();
+    this.changePageDisplay(true);
   }
 
-  changePageDisplay() {
-    this.changeVisibilityDisplay();
+  changePageDisplay(shouldCheckTransition = false) {
+    if (shouldCheckTransition) {
+      this.changeVisibilityAndTransition();
+    } else {
+      this.changeVisibilityDisplay();
+    }
     this.changeActiveMenuItem();
     this.emitChangeDisplayEvent();
+  }
+
+  changeVisibilityAndTransition() {
+    const prevActiveElem = document.querySelector(`.screen.active`);
+
+    if (prevActiveElem && this.pagesNeededTransitionLeave.includes(prevActiveElem.id)) {
+      this.pageTransitionElem.classList.add(`active`);
+
+      setTimeout(() => {
+        this.pageTransitionElem.classList.remove(`active`);
+        this.changeVisibilityDisplay();
+      }, 1000);
+    } else {
+      this.changeVisibilityDisplay();
+    }
   }
 
   changeVisibilityDisplay() {
