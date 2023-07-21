@@ -30,7 +30,7 @@
 
     &.swiper-slide-active {
       .slider__item-text {
-        animation: historyTextFadeIn 1s ease forwards;
+        animation: historyTextFadeIn $anim-duration-long ease forwards;
 
         @media (prefers-reduced-motion: reduce) {
           animation: none;
@@ -49,7 +49,7 @@
   &:nth-child(odd) {
     &.swiper-slide-active {
       .slider__item-text {
-        animation: historyTextFadeIn 1s ease forwards;
+        animation: historyTextFadeIn $anim-duration-long ease forwards;
 
         @media (prefers-reduced-motion: reduce) {
           animation: none;
@@ -69,7 +69,7 @@
 
     &.swiper-slide-next {
       .slider__item-text {
-        animation: historyTextFadeIn 1s ease 0.35s both;
+        animation: historyTextFadeIn $anim-duration-long ease 0.35s both;
 
         @media (prefers-reduced-motion: reduce) {
           animation: none;

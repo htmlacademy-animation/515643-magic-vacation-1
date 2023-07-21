@@ -93,7 +93,7 @@
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
-  animation: introTextFadeIn 1s ease 1s both;
+  animation: introTextFadeIn $anim-duration-long ease 1s both;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;

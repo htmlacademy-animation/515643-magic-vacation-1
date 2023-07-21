@@ -8,7 +8,7 @@
 
       li {
         opacity: 1;
-        transition: opacity 0.35s ease;
+        transition: opacity $anim-duration-short ease;
 
         &:nth-child(2) {
           transition-delay: 0.1s;
@@ -38,7 +38,7 @@
   height: 4rem;
   color: $c-dark;
   border-radius: 50%;
-  transition: all 0.35s ease;
+  transition: all $anim-duration-short ease;
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: none;
@@ -57,7 +57,7 @@
     background-color: $c-light;
     border: 0 solid $c-light;
     z-index: -1;
-    transition: all 0.35s cubic-bezier(0.25, 0.1, 0.71, 1.76) 0.35s;
+    transition: all $anim-duration-short cubic-bezier(0.25, 0.1, 0.71, 1.76) 0.35s;
   }
 
   svg {
@@ -90,7 +90,7 @@
 
       li {
         opacity: 1;
-        transition: opacity 0.35s ease;
+        transition: opacity $anim-duration-short ease;
 
         &:nth-child(2) {
           transition-delay: 0.1s;
@@ -124,7 +124,7 @@
   margin-top: 1.5rem;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.35s ease;
+  transition: opacity $anim-duration-short ease;
 
   @media (min-width: $stop-scaling) {
     margin-top: 15px;
@@ -182,7 +182,7 @@
     flex: none;
     margin-bottom: 0.5rem;
     opacity: 0;
-    transition: opacity 0.35s ease;
+    transition: opacity $anim-duration-short ease;
 
     @media (min-width: $stop-scaling) {
       margin-bottom: 5px;
@@ -207,7 +207,7 @@
   color: $c-light;
   border: 2px solid transparent;
   border-radius: 50%;
-  transition: all 0.35s ease;
+  transition: all $anim-duration-short ease;
 
   @media (min-width: $stop-scaling) {
     width: 40px;
