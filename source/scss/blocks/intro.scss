@@ -93,7 +93,7 @@
   text-transform: uppercase;
   font-size: 2.4rem;
   line-height: 1.27;
-  animation: introTextFadeIn 2s forwards;
+  animation: introTextFadeIn 1s ease 1s both;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
@@ -171,12 +171,7 @@
 @keyframes introTextFadeIn {
   0% {
     opacity: 0;
-    transform: translateY(20px);
-  }
-
-  50% {
-    opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(2rem);
   }
 
   100% {

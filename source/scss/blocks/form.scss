@@ -30,20 +30,43 @@
   }
 }
 
-.form__field {
+.form__field-box {
+  overflow: hidden;
+  width: 100%;
+  font-size: 2.4rem;
+  line-height: 1.2;
+  border-radius: 3rem;
   margin-right: 3rem;
+
+  @media (min-width: $stop-scaling) {
+    font-size: 24px;
+    border-radius: 30px;
+    margin-right: 30px;
+  }
+
+  @media (orientation: portrait) {
+    font-size: 1.6rem;
+    margin-right: 1rem;
+  }
+
+  @media (max-width: $mobile) and (orientation: landscape) {
+    font-size: 1.6rem;
+    margin-right: 1rem;
+  }
+}
+
+.form__field {
   padding: 0 5.6rem;
   height: 6rem;
   width: 100%;
   text-transform: uppercase;
   font: inherit;
-  font-size: 2.4rem;
-  line-height: 1.2;
+  line-height: inherit;
   color: $c-dark;
   border: 0;
   border-radius: 3rem;
   outline: none;
-  animation: gameInputAnim 1.5s forwards;
+  animation: showGameInput 1.5s ease forwards;
 
   @media (prefers-reduced-motion: reduce) {
     animation: none;
@@ -54,25 +77,19 @@
   }
 
   @media (min-width: $stop-scaling) {
-    margin-right: 30px;
     padding: 0 56px;
     height: 60px;
-    font-size: 24px;
     border-radius: 30px;
   }
 
   @media (orientation: portrait) {
-    margin-right: 1rem;
     padding: 0 2.5rem;
     height: 4rem;
-    font-size: 1.6rem;
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
-    margin-right: 1rem;
     padding: 0 2.5rem;
     height: 4rem;
-    font-size: 1.6rem;
   }
 }
 
@@ -143,12 +160,12 @@
   }
 }
 
-@keyframes gameInputAnim {
+@keyframes showGameInput {
   0% {
-    width: 0;
+    transform: translateX(calc(100% - 5rem));
   }
 
   100% {
-    width: 100%;
+    transform: translateX(0);
   }
 }
