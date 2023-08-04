@@ -25,7 +25,9 @@
 
   @if $settingsAndOtherAnims {
     animation: #{$name} $settingsAndOtherAnims;
-  } @else {
+  }
+
+  @else {
     animation: #{$name};
   }
 }
@@ -127,6 +129,7 @@
   margin: auto;
   padding-top: 7rem;
   max-width: 69.6rem;
+
   @include rulesAnimationDelayFunc(4);
 
   @media (min-width: $stop-scaling) {
@@ -193,6 +196,7 @@
     border-radius: 50%;
     line-height: 5rem;
     text-align: center;
+
     @include changeColorAnim(changeRulesItemColor, $c-light, transparent, $anim-duration-short ease both, changeRulesItemIndexSize $anim-duration-middle cubic-bezier(0.25, 0.1, 0.71, 1.76) both);
 
     @media (prefers-reduced-motion: reduce) {
