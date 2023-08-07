@@ -1,3 +1,37 @@
+@mixin rulesAnimationDelayFunc($length) {
+  @for $item from 0 to $length {
+    .rules__item:nth-child(#{$item + 1}) {
+      &::before {
+        animation-delay: $item * 0.3s + 0.3s, $item * 0.3s;
+      }
+
+      p {
+        animation-delay: ($item + 1) * 0.2s;
+      }
+    }
+  }
+}
+
+@mixin changeColorAnim($name, $to, $from: transparent, $settingsAndOtherAnims...) {
+  @keyframes #{$name} {
+    0% {
+      color: $from;
+    }
+
+    100% {
+      color: $to;
+    }
+  }
+
+  @if $settingsAndOtherAnims {
+    animation: #{$name} $settingsAndOtherAnims;
+  }
+
+  @else {
+    animation: #{$name};
+  }
+}
+
 .rules {
   position: relative;
   flex-grow: 1;
@@ -96,6 +130,8 @@
   padding-top: 7rem;
   max-width: 69.6rem;
 
+  @include rulesAnimationDelayFunc(4);
+
   @media (min-width: $stop-scaling) {
     column-gap: 96px;
     padding-top: 70px;
@@ -155,10 +191,17 @@
     font-family: $font-alt;
     font-weight: 400;
     font-size: 2.4rem;
+    color: $c-light;
     background-color: $c-purple;
     border-radius: 50%;
     line-height: 5rem;
     text-align: center;
+
+    @include changeColorAnim(changeRulesItemColor, $c-light, transparent, $anim-duration-short ease both, changeRulesItemIndexSize $anim-duration-middle cubic-bezier(0.25, 0.1, 0.71, 1.76) both);
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
 
     @media (max-width: $tablet) and (orientation: portrait) {
       top: 1rem;
@@ -179,6 +222,11 @@
 
   p {
     margin: 0;
+    animation: rulesTextFadeIn $anim-duration-long ease both;
+
+    @media (prefers-reduced-motion: reduce) {
+      animation: none;
+    }
 
     @media (max-width: $tablet) and (orientation: portrait) {
       min-height: calc(1.4rem * 2.2);
@@ -186,20 +234,28 @@
   }
 }
 
-.rules__link {
+.rules__btn-box {
+  font-size: 2.4rem;
   position: absolute;
+  display: flex;
+  align-items: center;
   bottom: 6rem;
   right: 5.6rem;
+  overflow: hidden;
+  border-radius: 3.5rem;
 
   @media (min-width: $stop-scaling) {
+    font-size: 24px;
     bottom: 60px;
     right: 56px;
   }
 
   @media (max-width: $tablet) and (orientation: portrait) {
+    font-size: 1.8rem;
     left: 0;
     right: 0;
     bottom: 4rem;
+    width: 100%;
   }
 
   @media (max-width: $tablet) and (orientation: landscape) {
@@ -207,7 +263,58 @@
   }
 
   @media (max-width: $mobile) and (orientation: landscape) {
+    font-size: 1.8rem;
     bottom: 2rem;
     right: 1.5rem;
+  }
+}
+
+.rules__link {
+  @include changeColorAnim(changeRulesBtnColor, $c-dark, transparent, $anim-duration-short ease 1.5s both, rulesBtnFadeIn $anim-duration-short 1.25s ease both);
+
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+
+  @media (max-width: $tablet) and (orientation: portrait) {
+    width: 100%;
+  }
+}
+
+@keyframes changeRulesItemIndexSize {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rulesTextFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(3rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rulesBtnFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(calc(100% - 5rem));
+  }
+
+  1% {
+    opacity: 1;
+    transform: translateX(calc(100% - 5rem));
+  }
+
+  100% {
+    transform: translateX(0);
   }
 }

@@ -35,9 +35,9 @@
   padding: 1rem 0;
   width: 10rem;
   color: $c-light;
-  transform: translateX(-20px);
+  transform: translateX(-1rem);
   opacity: 0;
-  transition: all 1s cubic-bezier(0.23, 1.1, 1, 0.99);
+  transition: all $anim-duration-long cubic-bezier(0.23, 1.1, 1, 0.99);
 
   @media (min-width: $stop-scaling) {
     top: -5px;
@@ -84,9 +84,9 @@
   background-color: $c-light;
   border-radius: 50%;
   z-index: 1;
-  transform: translateX(20px);
+  transform: translateX(1rem);
   opacity: 0;
-  transition: all 1s cubic-bezier(0.23, 1.1, 1, 0.99);
+  transition: all $anim-duration-long cubic-bezier(0.23, 1.1, 1, 0.99);
 
   @media (max-width: $tablet) and (orientation: portrait) {
     display: block;
@@ -103,7 +103,7 @@
     right: 0.8rem;
     height: 1px;
     background-color: $c-dark;
-    transition: all 0.35s ease;
+    transition: all $anim-duration-short ease;
   }
 
   &::before {
@@ -142,7 +142,6 @@
   }
 
   .page-header__nav {
-    transform: translateX(0);
     opacity: 1;
 
     @media (max-width: $tablet) and (orientation: portrait) {
@@ -155,9 +154,8 @@
 .page-header__nav {
   display: flex;
   align-items: center;
-  transform: translateX(20px);
   opacity: 0;
-  transition: all 1s cubic-bezier(0.23, 1.1, 1, 0.99);
+  transition: opacity $anim-duration-long cubic-bezier(0.23, 1.1, 1, 0.99);
 
   @media (max-width: $tablet) and (orientation: portrait) {
     position: fixed;
@@ -172,7 +170,7 @@
     background-color: $c-light;
     transform: translateX(-100%);
     opacity: 1;
-    transition: transform 0.5s cubic-bezier(0.23, 1.1, 1, 0.99);
+    transition: transform $anim-duration-middle cubic-bezier(0.23, 1.1, 1, 0.99);
 
     .page-header--menu-opened & {
       transform: translateX(0);
@@ -271,7 +269,7 @@
     display: block;
     color: inherit;
     padding: 0 0.5em 0.5em;
-    transition: color 0.35s ease;
+    transition: color $anim-duration-short ease;
 
     &::after {
       content: "";
@@ -282,7 +280,7 @@
       background-color: $c-light;
       right: 0;
       left: unset;
-      transition: all 0.35s ease;
+      transition: all $anim-duration-short ease;
 
       @media (max-width: $tablet) and (orientation: portrait) {
         background-color: $c-dark;

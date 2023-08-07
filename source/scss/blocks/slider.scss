@@ -30,7 +30,7 @@
 
     &.swiper-slide-active {
       .slider__item-text {
-        animation: historyTextFadeIn 1s forwards;
+        animation: historyTextFadeIn $anim-duration-long ease both;
 
         @media (prefers-reduced-motion: reduce) {
           animation: none;
@@ -49,7 +49,7 @@
   &:nth-child(odd) {
     &.swiper-slide-active {
       .slider__item-text {
-        animation: historyTextFadeIn 1s forwards;
+        animation: historyTextFadeIn $anim-duration-long ease both;
 
         @media (prefers-reduced-motion: reduce) {
           animation: none;
@@ -69,7 +69,7 @@
 
     &.swiper-slide-next {
       .slider__item-text {
-        animation: delayHistoryTextFadeIn 1.33s forwards;
+        animation: historyTextFadeIn $anim-duration-long ease 0.35s both;
 
         @media (prefers-reduced-motion: reduce) {
           animation: none;
@@ -128,7 +128,6 @@
   max-width: 34rem;
   font-size: 1.8rem;
   line-height: 2rem;
-  position: relative;
 
   @media (min-width: $stop-scaling) {
     margin-top: 36px;
@@ -313,28 +312,11 @@
 @keyframes historyTextFadeIn {
   0% {
     opacity: 0;
-    left: 40px;
+    transform: translateX(2rem);
   }
 
   100% {
     opacity: 1;
-    left: 0;
-  }
-}
-
-@keyframes delayHistoryTextFadeIn {
-  0% {
-    opacity: 0;
-    left: 40px;
-  }
-
-  33% {
-    opacity: 0;
-    left: 40px;
-  }
-
-  100% {
-    opacity: 1;
-    left: 0;
+    transform: translateX(0);
   }
 }
